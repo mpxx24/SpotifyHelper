@@ -11,11 +11,13 @@ namespace SpotifyApiProvider.Core {
             var clientId = ConfigurationManager.AppSettings["clientId"];
             var secretId = ConfigurationManager.AppSettings["secretId"];
 
-            //TODO: check ifthere is another way to pass params via ctor 
-            builder.RegisterType<RequestHelper>().As<IRequestHelper>()
-                .WithParameters(new List<Parameter> {new NamedParameter("clientId", clientId), new NamedParameter("clientSecretId", secretId)});
+            //not sure if this is a proper/the best way
+            var token = new AuthorizationCodeService(clientId, secretId).GetToken().access_token;
+
             builder.RegisterType<AuthorizationCodeService>().As<IAuthorizationCodeService>()
-                .WithParameters(new List<Parameter> {new NamedParameter("clientId", clientId), new NamedParameter("clientSecretId", secretId)});
+                   .WithParameters(new List<Parameter> {new NamedParameter("clientId", clientId), new NamedParameter("clientSecretId", secretId)});
+            builder.RegisterType<RequestHelper>().As<IRequestHelper>()
+                   .WithParameters(new List<Parameter> {new NamedParameter("token", token)});
             builder.RegisterType<PlaylistService>().As<IPlaylistService>();
         }
     }

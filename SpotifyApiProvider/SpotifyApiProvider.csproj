@@ -61,6 +61,7 @@
     <Compile Include="API\Models\Playlist.cs" />
     <Compile Include="API\IRequestHelper.cs" />
     <Compile Include="API\Models\PlaylistTracks.cs" />
+    <Compile Include="API\Models\RequestType.cs" />
     <Compile Include="API\PlaylistService.cs" />
     <Compile Include="API\RequestHelper.cs" />
     <Compile Include="Core\ApiProviderModule.cs" />

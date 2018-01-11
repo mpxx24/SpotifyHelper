@@ -1,5 +1,7 @@
-﻿namespace SpotifyApiProvider.API {
+﻿using SpotifyApiProvider.API.Models;
+
+namespace SpotifyApiProvider.API {
     public interface IRequestHelper {
-        string GetData(string address, string token = null);
+        string PerformRequest(string address, RequestType requestType = RequestType.GET, string parameters = null);
     }
 }
