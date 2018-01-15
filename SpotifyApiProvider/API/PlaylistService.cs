@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using SpotifyApiProvider.API.Classes.Playlist;
 using SpotifyApiProvider.API.Models;
 
 namespace SpotifyApiProvider.API {
@@ -10,8 +9,8 @@ namespace SpotifyApiProvider.API {
             this.requestHelper = requestHelper;
         }
 
-        public Playlist GetPlaylistFromJson(string json) {
-            return JsonConvert.DeserializeObject<Playlist>(json);
+        public PlaylistsWrapper GetPlaylistFromJson(string json) {
+            return JsonConvert.DeserializeObject<PlaylistsWrapper>(json);
         }
 
         public PlaylistTracks GetTracksFromJson(string json) {
@@ -19,8 +18,8 @@ namespace SpotifyApiProvider.API {
         }
 
         //TODO: this should be IEnumerable<T>
-        public Playlist GetUserPlaylists(string username) {
-            var playlists = this.requestHelper.PerformRequest(string.Format(ApiAdresses.User, username));
+        public PlaylistsWrapper GetUserPlaylists(string username) {
+            var playlists = this.requestHelper.GetData(string.Format(ApiAdresses.User, username));
             return this.GetPlaylistFromJson(playlists);
         }
 
@@ -30,7 +29,7 @@ namespace SpotifyApiProvider.API {
             //PlaylistTracks result;
             //foreach (var pItem in playlist.items) {
             //    try {
-            //        var playlistTracks = this.requestHelper.PerformRequest(string.Format(ApiAdresses.TracksFromPlaylist, username, pItem.id));
+            //        var playlistTracks = this.requestHelper.GetData(string.Format(ApiAdresses.TracksFromPlaylist, username, pItem.id));
             //        var tracks = this.GetTracksFromJson(playlistTracks);
             //    }
             //    catch (Exception) {
@@ -42,8 +41,8 @@ namespace SpotifyApiProvider.API {
         }
 
         //TODO: pass parameters
-        public void CreatePlaylistForUser(string userame) {
-            //this.requestHelper.PerformRequest(string.Format(ApiAdresses.CreatePlaylist, userame));
+        public void CreatePlaylistForUser(string userame, string parameters) {
+            this.requestHelper.PostData(string.Format(ApiAdresses.CreatePlaylist, userame), parameters);
         }
     }
 }
