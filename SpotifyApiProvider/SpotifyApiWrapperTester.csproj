@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7EFE2908-C0C2-4452-BC5D-F170AB402528}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SpotifyApiProvider</RootNamespace>
-    <AssemblyName>SpotifyApiProvider</AssemblyName>
+    <RootNamespace>SpotifyApiWrapperTester</RootNamespace>
+    <AssemblyName>SpotifyApiWrapperTester</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,12 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -53,25 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\Authorization\AuthorizationCodeService.cs" />
-    <Compile Include="API\Authorization\IAuthorizationCodeService.cs" />
-    <Compile Include="API\Authorization\Token.cs" />
-    <Compile Include="API\IPlaylistService.cs" />
-    <Compile Include="API\Models\ApiAdresses.cs" />
-    <Compile Include="API\Models\Playlist.cs" />
-    <Compile Include="API\IRequestHelper.cs" />
-    <Compile Include="API\Models\PlaylistTracks.cs" />
-    <Compile Include="API\Models\RequestType.cs" />
-    <Compile Include="API\PlaylistService.cs" />
-    <Compile Include="API\RequestHelper.cs" />
-    <Compile Include="Core\ApiProviderModule.cs" />
-    <Compile Include="Core\IoC.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpotifyApiWrapper\SpotifyApiWrapper.csproj">
+      <Project>{041F37BB-5129-4F55-B846-3C3AB53173B1}</Project>
+      <Name>SpotifyApiWrapper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

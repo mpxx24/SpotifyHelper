@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace SpotifyApiProvider.API.Models {
+namespace SpotifyApiWrapper.API.Models {
     public class AddedBy {
         public string href { get; set; }
         public string id { get; set; }
@@ -40,7 +39,7 @@ namespace SpotifyApiProvider.API.Models {
         public Track track { get; set; }
     }
 
-    public class PlaylistTracks {
+    public class TracksRoot {
         public string href { get; set; }
         public List<TrackWrapper> items { get; set; }
     }

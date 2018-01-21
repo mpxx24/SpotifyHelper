@@ -2,7 +2,7 @@
 
 //TODO: clean up namespace + class names (dupl with playlist...)
 //abracadabra summon [attributes]
-namespace SpotifyApiProvider.API.Models {
+namespace SpotifyApiWrapper.API.Models {
     public class ExternalUrls {
         public string spotify { get; set; }
     }
@@ -35,7 +35,7 @@ namespace SpotifyApiProvider.API.Models {
         public string uri { get; set; }
     }
 
-    public class PlaylistsWrapper {
+    public class PlaylistsRoot{
         public string href { get; set; }
         public List<Playlist> items { get; set; }
     }

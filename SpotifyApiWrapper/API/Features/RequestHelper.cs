@@ -4,19 +4,17 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using SpotifyApiWrapper.API.Contracts;
 
-namespace SpotifyApiProvider.API {
-    public class RequestHelper : IRequestHelper {
+namespace SpotifyApiWrapper.API.Features {
+    internal class RequestHelper : IRequestHelper {
         private readonly string token;
 
-        private readonly string redirectAddress;
-
-        public RequestHelper(string token, string redirectAddress) {
+        public RequestHelper(string token) {
             this.token = token;
-            this.redirectAddress = redirectAddress;
         }
 
-        public string GetData(string address, IDictionary<string, string> parameters = null) {
+        public string GetData(string address, IParameters parameters = null) {
             if (parameters != null) {
                 var addressWithQueryParams = this.CreateQueryStringFromParameters(address, parameters);
                 address = addressWithQueryParams;
@@ -55,6 +53,7 @@ namespace SpotifyApiProvider.API {
             }
         }
 
+        //TODO: maybe try to use IParameters
         public string PostData(string address, string parameters) {
             var request = (HttpWebRequest) WebRequest.Create(address);
             var data = Encoding.ASCII.GetBytes(parameters);
@@ -85,7 +84,7 @@ namespace SpotifyApiProvider.API {
             }
         }
 
-        private string CreateQueryStringFromParameters(string address, IDictionary<string, string> parameters) {
+        private string CreateQueryStringFromParameters(string address, IParameters parameters) {
             //temp solution only for auth
             using (var content = new FormUrlEncodedContent(new[] {
                 new KeyValuePair<string, string>("clientId", this.token),

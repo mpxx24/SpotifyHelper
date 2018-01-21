@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{041F37BB-5129-4F55-B846-3C3AB53173B1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpotifyApiWrapper</RootNamespace>
+    <AssemblyName>SpotifyApiWrapper</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\Authorization\AuthorizationCodeService.cs" />
+    <Compile Include="API\Authorization\IAuthorizationCodeService.cs" />
+    <Compile Include="API\Authorization\Token.cs" />
+    <Compile Include="API\Contracts\IAudioAnalysisService.cs" />
+    <Compile Include="API\Contracts\IParameters.cs" />
+    <Compile Include="API\Contracts\IPlaylistService.cs" />
+    <Compile Include="API\Contracts\IRequestHelper.cs" />
+    <Compile Include="API\Features\AudioAnalysisService.cs" />
+    <Compile Include="API\Contracts\IRecommendationsService.cs" />
+    <Compile Include="API\Features\RecommendationsService.cs" />
+    <Compile Include="API\Helpers\Playlist\PlaylistHelper.cs" />
+    <Compile Include="API\Helpers\Playlist\PlaylistParameters.cs" />
+    <Compile Include="API\Helpers\Recommendations\RecommendationsParameters.cs" />
+    <Compile Include="API\Models\ApiAdresses.cs" />
+    <Compile Include="API\Models\AudioAnalysis.cs" />
+    <Compile Include="API\Models\Playlist.cs" />
+    <Compile Include="API\Models\TrackFeatures.cs" />
+    <Compile Include="API\Models\TracksRoot.cs" />
+    <Compile Include="API\Features\PlaylistService.cs" />
+    <Compile Include="API\Features\RequestHelper.cs" />
+    <Compile Include="API\Wrappers\AudioAnalysisWrapper.cs" />
+    <Compile Include="API\Wrappers\PlaylistsWrapper.cs" />
+    <Compile Include="Core\ApiProviderModule.cs" />
+    <Compile Include="Core\Exceptions\WrapperInitializationException.cs" />
+    <Compile Include="Core\IoC.cs" />
+    <Compile Include="Core\SpotifyApiWrapperInitializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

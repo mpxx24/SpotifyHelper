@@ -1,7 +1,7 @@
 ﻿using Autofac;
 
-namespace SpotifyApiProvider.Core {
-    public static class IoC {
+namespace SpotifyApiWrapper.Core {
+     internal static class IoC {
         private static IContainer container;
 
         private static ContainerBuilder builder;
@@ -13,7 +13,7 @@ namespace SpotifyApiProvider.Core {
         public static void Initialize(Module[] modules) {
             builder = new ContainerBuilder();
 
-            if (builder != null) {
+            if (modules != null) {
                 foreach (var module in modules) {
                     builder.RegisterModule(module);
                 }

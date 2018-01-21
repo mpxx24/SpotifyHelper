@@ -3,10 +3,10 @@ using System.Collections.Specialized;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
-using SpotifyApiProvider.API.Models;
+using SpotifyApiWrapper.API.Models;
 
-namespace SpotifyApiProvider.API.Authorization {
-    public class AuthorizationCodeService : IAuthorizationCodeService {
+namespace SpotifyApiWrapper.API.Authorization {
+    internal class AuthorizationCodeService : IAuthorizationCodeService {
         private readonly string clientId;
         private readonly string clientSecretId;
 
