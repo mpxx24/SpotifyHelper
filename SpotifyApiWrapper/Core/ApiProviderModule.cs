@@ -25,6 +25,7 @@ namespace SpotifyApiWrapper.Core {
                    .WithParameters(new List<Parameter> {new NamedParameter("token", token)});
             builder.RegisterType<PlaylistService>().As<IPlaylistService>();
             builder.RegisterType<AudioAnalysisService>().As<IAudioAnalysisService>();
+            builder.RegisterType<RecommendationsService>().As<IRecommendationsService>();
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Net.Http;
 using System.Text;
 using SpotifyApiWrapper.API.Contracts;
+using SpotifyApiWrapper.API.Helpers;
 
 namespace SpotifyApiWrapper.API.Features {
     internal class RequestHelper : IRequestHelper {
@@ -16,7 +15,7 @@ namespace SpotifyApiWrapper.API.Features {
 
         public string GetData(string address, IParameters parameters = null) {
             if (parameters != null) {
-                var addressWithQueryParams = this.CreateQueryStringFromParameters(address, parameters);
+                var addressWithQueryParams = this.CreateAddressWithParameters(address, parameters);
                 address = addressWithQueryParams;
             }
 
@@ -84,17 +83,8 @@ namespace SpotifyApiWrapper.API.Features {
             }
         }
 
-        private string CreateQueryStringFromParameters(string address, IParameters parameters) {
-            //temp solution only for auth
-            using (var content = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("clientId", this.token),
-                new KeyValuePair<string, string>("response_type", "code"),
-                new KeyValuePair<string, string>("redirect_uri", string.Empty)
-            })) {
-                var resultContent = content.ReadAsStringAsync().Result;
-
-                return $"{address}/?{resultContent}";
-            }
+        private string CreateAddressWithParameters(string address, IParameters parameters) {
+            return $"{address}/?{parameters.ConvertToUrlEncodedString()}";
         }
     }
 }

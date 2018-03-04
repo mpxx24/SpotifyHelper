@@ -7,5 +7,6 @@
         public static readonly string Authorization = "https://accounts.spotify.com/authorize";
         public static readonly string AudioFeatures = "https://api.spotify.com/v1/audio-features/{0}";
         public static readonly string AudioAnalysis = "https://api.spotify.com/v1/audio-analysis/{0}";
+        public static readonly string Reccomendations = "https://api.spotify.com/v1/recommendations";
     }
 }

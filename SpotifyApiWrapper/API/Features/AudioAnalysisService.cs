@@ -24,8 +24,8 @@ namespace SpotifyApiWrapper.API.Features {
 
         public AudioAnalysis GetTrackAudioAnalysis(string trackId) {
             try {
-                var trackFeatures = this.requestHelper.GetData(string.Format(ApiAdresses.AudioAnalysis, trackId));
-                return JsonConvert.DeserializeObject<AudioAnalysis>(trackFeatures);
+                var audioAnalysis = this.requestHelper.GetData(string.Format(ApiAdresses.AudioAnalysis, trackId));
+                return JsonConvert.DeserializeObject<AudioAnalysis>(audioAnalysis);
             }
             catch (Exception ex) {
                 //TODO: log
