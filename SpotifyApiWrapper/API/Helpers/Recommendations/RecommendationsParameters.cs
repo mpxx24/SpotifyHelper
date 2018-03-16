@@ -1,9 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using SpotifyApiWrapper.API.Contracts;
 
 namespace SpotifyApiWrapper.API.Helpers.Recommendations {
     public class RecommendationsParameters : IParameters {
+        private RecommendationsParameters() {
+        }
+
+        public RecommendationsParameters(IEnumerable<RecommendationsGenre> genres) {
+            var formattedGenres = this.FormatGenres(genres.Select(x => x.ToString().ToLowerInvariant()));
+            this.Genres = formattedGenres;
+        }
+
         [JsonProperty("target_mode")]
         public string TargetMode { get; set; }
 
@@ -143,7 +152,11 @@ namespace SpotifyApiWrapper.API.Helpers.Recommendations {
         public string MinLaudeness { get; set; }
 
         public override string ToString() {
-            return JsonConvert.SerializeObject(this);
+            return JsonConvert.SerializeObject(this, new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore});
+        }
+
+        private IEnumerable<string> FormatGenres(IEnumerable<string> genres) {
+            return genres.Select(x => x.ToLowerInvariant().Replace("_", "-")).ToList();
         }
     }
 }

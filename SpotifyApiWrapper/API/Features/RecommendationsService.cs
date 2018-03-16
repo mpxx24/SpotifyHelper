@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using SpotifyApiWrapper.API.Contracts;
+using SpotifyApiWrapper.API.Helpers.Recommendations;
 using SpotifyApiWrapper.API.Models;
 
 namespace SpotifyApiWrapper.API.Features {
@@ -24,7 +25,11 @@ namespace SpotifyApiWrapper.API.Features {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Track> GetTracksReccomendationsBasenOnCustomCriteria(IParameters parameters) {
+        public IEnumerable<Track> GetTracksReccomendationsBasenOnCustomCriteria(IParameters parameters, int limit = 10) {
+            if (parameters is RecommendationsParameters recommendationsParameters) {
+                recommendationsParameters.Limit = recommendationsParameters.Limit ?? (recommendationsParameters.Limit = limit.ToString());
+            }
+
             var tracksAsJson = this.requestHelper.GetData(ApiAdresses.Reccomendations, parameters);
             return this.GetTracksFromJson(tracksAsJson);
         }

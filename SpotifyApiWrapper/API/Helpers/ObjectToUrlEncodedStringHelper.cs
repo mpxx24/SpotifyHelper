@@ -1,20 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 using SpotifyApiWrapper.API.Contracts;
 
 namespace SpotifyApiWrapper.API.Helpers {
-    public static class ObjectToUrlEncodedStringHelper {
+    internal static class ObjectToUrlEncodedStringHelper {
         public static string ConvertToUrlEncodedString(this IParameters parameters) {
             var result = new Dictionary<string, string>();
             if (parameters == null) {
                 return string.Empty;
             }
 
-            var t1 = parameters.GetType();
-            foreach (var prop in t1.GetProperties()) {
+            var parametersType = parameters.GetType();
+            foreach (var prop in parametersType.GetProperties()) {
                 foreach (var customAttribute in prop.GetCustomAttributes(true)) {
                     string propValueAsString;
 

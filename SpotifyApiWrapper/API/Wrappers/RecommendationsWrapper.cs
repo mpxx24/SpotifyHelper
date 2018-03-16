@@ -5,7 +5,7 @@ using SpotifyApiWrapper.Core;
 
 namespace SpotifyApiWrapper.API.Wrappers {
     public static class RecommendationsWrapper {
-        public static IEnumerable<Track> GetTracksReccomendationsBasenOnCustomCriteria(IParameters parameters) {
+        public static IEnumerable<Track> GetTracksReccomendationsBasedOnCustomCriteria(IParameters parameters) {
             return IoC.Resolve<IRecommendationsService>().GetTracksReccomendationsBasenOnCustomCriteria(parameters);
         }
     }
