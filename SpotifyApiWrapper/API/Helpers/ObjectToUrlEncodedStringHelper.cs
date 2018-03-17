@@ -48,7 +48,9 @@ namespace SpotifyApiWrapper.API.Helpers {
                 sb.Append($"{elem},");
             }
 
-            sb.Length -= 1;
+            if (sb.Length >= 1) {
+                sb.Length -= 1;
+            }
             return sb.ToString();
         }
     }

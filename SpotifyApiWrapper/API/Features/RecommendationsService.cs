@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using SpotifyApiWrapper.API.Contracts;
 using SpotifyApiWrapper.API.Helpers.Recommendations;
@@ -14,18 +14,23 @@ namespace SpotifyApiWrapper.API.Features {
         }
 
         public IEnumerable<Track> GetTracksReccomendationsBasedOnTrack(string trackId, int limit = 10) {
-            throw new NotImplementedException();
+            var tracksAsJson = this.requestHelper.GetData(ApiAdresses.Reccomendations, new RecommendationsParameters(new List<RecommendationsGenre>()) {Tracks = new List<string> {trackId}, Limit = limit.ToString()});
+            return this.GetTracksFromJson(tracksAsJson);
         }
 
         public IEnumerable<Album> GetAlbumsReccomendationsBasedOnTrack(string trackId, int limit = 10) {
-            throw new NotImplementedException();
+            var tracksAsJson = this.requestHelper.GetData(ApiAdresses.Reccomendations, new RecommendationsParameters(new List<RecommendationsGenre>()) {Tracks = new List<string> {trackId}, Limit = limit.ToString()});
+            var tracks = this.GetTracksFromJson(tracksAsJson);
+            return tracks.Select(x => x.album).Distinct();
         }
 
         public IEnumerable<Artist> GetArtistsReccomendationsBasedOnTrack(string trackId, int limit = 10) {
-            throw new NotImplementedException();
+            var tracksAsJson = this.requestHelper.GetData(ApiAdresses.Reccomendations, new RecommendationsParameters(new List<RecommendationsGenre>()) {Tracks = new List<string> {trackId}, Limit = limit.ToString()});
+            var tracks = this.GetTracksFromJson(tracksAsJson);
+            return tracks.SelectMany(x => x.artists).Distinct();
         }
 
-        public IEnumerable<Track> GetTracksReccomendationsBasenOnCustomCriteria(IParameters parameters, int limit = 10) {
+        public IEnumerable<Track> GetTracksReccomendationsBasedOnCustomCriteria(IParameters parameters, int limit = 10) {
             if (parameters is RecommendationsParameters recommendationsParameters) {
                 recommendationsParameters.Limit = recommendationsParameters.Limit ?? (recommendationsParameters.Limit = limit.ToString());
             }

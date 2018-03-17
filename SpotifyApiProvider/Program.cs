@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using SpotifyApiWrapper.API.Helpers;
 using SpotifyApiWrapper.API.Helpers.Recommendations;
+using SpotifyApiWrapper.API.Models;
 using SpotifyApiWrapper.API.Wrappers;
 using SpotifyApiWrapper.Core;
 using static System.Console;
@@ -17,29 +18,48 @@ namespace SpotifyApiWrapperTester {
                 var secretId = ConfigurationManager.AppSettings["secretId"];
 
                 SpotifyApiWrapperInitializer.Initialize(clientId, secretId);
+                var testTrackId = "0aAvVcHH0eN1fnKUkPcZ0y";
 
+                //
                 //DisplayUserPlaylists("mpxx24");
-                //CreateObjectWithPropertiesFromString();
+                //DisplayRecommendedTracks(testTrackId, features);
+                //DisplayRecommendedAlbums(testTrackId);
+                //DisplayRecommendedArtists(testTrackId);
+                //
 
-                var features = AudioAnalysisWrapper.GetTrackFeatures("0aAvVcHH0eN1fnKUkPcZ0y");
-                var analisys = AudioAnalysisWrapper.GetTrackAudioAnalysis("0aAvVcHH0eN1fnKUkPcZ0y");
-
-                var genres = new List<RecommendationsGenre> {RecommendationsGenre.J_Rock};
-
-                var criteria = new RecommendationsParameters(genres) {
-                    MinDanceability = features.danceability.ToString(CultureInfo.InvariantCulture),
-                    MinEnergy = features.energy.ToString(CultureInfo.InvariantCulture)
-                };
-
-                var tracks = RecommendationsWrapper.GetTracksReccomendationsBasedOnCustomCriteria(criteria);
-                foreach (var track in tracks) {
-                    WriteLine($"{string.Join("&", track.artists.Select(x => x.name))} - {track.name}");
-                }
+                //var features = AudioAnalysisWrapper.GetTrackFeatures(testTrackId);
+                //var analisys = AudioAnalysisWrapper.GetTrackAudioAnalysis(testTrackId);
             }
             catch (Exception ex) {
                 WriteLine($"exception type: {ex.GetType()}\nexception message: {ex.Message}");
             }
             ReadLine();
+        }
+
+        private static void DisplayRecommendedArtists(string testTrackId) {
+            var artists = RecommendationsWrapper.GetArtistsReccomendationsBasedOnTrack(testTrackId);
+            OutputItemsToConsole.PrintRecommendedArtists(artists);
+        }
+
+        private static void DisplayRecommendedTracks(string testTrackId) {
+            var features = AudioAnalysisWrapper.GetTrackFeatures(testTrackId);
+            var genres = new List<RecommendationsGenre> {RecommendationsGenre.Rock};
+
+            var criteria = new RecommendationsParameters(genres) {
+                Tracks = new List<string> {testTrackId},
+                MinDanceability = features.danceability.ToString(CultureInfo.InvariantCulture),
+                MinEnergy = features.energy.ToString(CultureInfo.InvariantCulture),
+                MinTempo = features.tempo.ToString(CultureInfo.InvariantCulture)
+            };
+
+            var tracks = RecommendationsWrapper.GetTracksReccomendationsBasedOnCustomCriteria(criteria);
+            WriteLine(criteria);
+            OutputItemsToConsole.PrintRecommendedTracks(tracks);
+        }
+
+        private static void DisplayRecommendedAlbums(string testTrackId) {
+            var albums = RecommendationsWrapper.GetAlbumsReccomendationsBasedOnTrack(testTrackId);
+            OutputItemsToConsole.PrintRecommendedAlbums(albums);
         }
 
         private static void DisplayUserPlaylists(string username) {
