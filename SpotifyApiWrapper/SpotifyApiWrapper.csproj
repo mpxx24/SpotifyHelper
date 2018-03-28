@@ -60,11 +60,14 @@
     <Compile Include="API\Features\AudioAnalysisService.cs" />
     <Compile Include="API\Contracts\IRecommendationsService.cs" />
     <Compile Include="API\Features\RecommendationsService.cs" />
+    <Compile Include="API\Helpers\ApiModelToOneWithAttributesBuilder.cs" />
+    <Compile Include="API\Helpers\ApiModelToOneWithAttributesHelper.cs" />
     <Compile Include="API\Helpers\ObjectFromStringListBuilder.cs" />
     <Compile Include="API\Helpers\ObjectFromStringListHelper.cs" />
     <Compile Include="API\Helpers\ObjectToUrlEncodedStringHelper.cs" />
     <Compile Include="API\Helpers\Playlist\PlaylistHelper.cs" />
     <Compile Include="API\Helpers\Playlist\PlaylistParameters.cs" />
+    <Compile Include="API\Helpers\PropertyExample.cs" />
     <Compile Include="API\Helpers\Recommendations\RecommendationsGenre.cs" />
     <Compile Include="API\Helpers\Recommendations\RecommendationsParameters.cs" />
     <Compile Include="API\Models\ApiAdresses.cs" />

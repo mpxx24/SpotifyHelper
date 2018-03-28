@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using SpotifyApiWrapper.API.Helpers;
 using SpotifyApiWrapper.API.Helpers.Recommendations;
 using SpotifyApiWrapper.API.Models;
@@ -20,12 +21,14 @@ namespace SpotifyApiWrapperTester {
                 SpotifyApiWrapperInitializer.Initialize(clientId, secretId);
                 var testTrackId = "0aAvVcHH0eN1fnKUkPcZ0y";
 
-                //
+                ////automated formatting of serializable classes (API models)
+                //var formattedTypes = GetFormattedApiModels();
+
                 //DisplayUserPlaylists("mpxx24");
-                //DisplayRecommendedTracks(testTrackId, features);
+                //DisplayRecommendedTracks(testTrackId);
                 //DisplayRecommendedAlbums(testTrackId);
                 //DisplayRecommendedArtists(testTrackId);
-                //
+
 
                 //var features = AudioAnalysisWrapper.GetTrackFeatures(testTrackId);
                 //var analisys = AudioAnalysisWrapper.GetTrackAudioAnalysis(testTrackId);
@@ -47,9 +50,9 @@ namespace SpotifyApiWrapperTester {
 
             var criteria = new RecommendationsParameters(genres) {
                 Tracks = new List<string> {testTrackId},
-                MinDanceability = features.danceability.ToString(CultureInfo.InvariantCulture),
-                MinEnergy = features.energy.ToString(CultureInfo.InvariantCulture),
-                MinTempo = features.tempo.ToString(CultureInfo.InvariantCulture)
+                MinDanceability = features.Danceability.ToString(CultureInfo.InvariantCulture),
+                MinEnergy = features.Energy.ToString(CultureInfo.InvariantCulture),
+                MinTempo = features.Tempo.ToString(CultureInfo.InvariantCulture)
             };
 
             var tracks = RecommendationsWrapper.GetTracksReccomendationsBasedOnCustomCriteria(criteria);
@@ -65,10 +68,10 @@ namespace SpotifyApiWrapperTester {
         private static void DisplayUserPlaylists(string username) {
             var playlists = PlaylistsWrapper.GetUsersPlaylists(username);
             foreach (var playlist in playlists) {
-                WriteLine(playlist.name);
-                var songs = PlaylistsWrapper.GetSongsFromPlaylist(username, playlist.id);
+                WriteLine(playlist.Name);
+                var songs = PlaylistsWrapper.GetSongsFromPlaylist(username, playlist.Id);
                 foreach (var song in songs) {
-                    WriteLine($"\t{string.Join("&", song.artists.Select(x => x.name))} - {song.name}");
+                    WriteLine($"\t{string.Join("&", song.Artists.Select(x => x.Name))} - {song.Name}");
                 }
             }
         }
@@ -84,6 +87,26 @@ namespace SpotifyApiWrapperTester {
             }
 
             var objectFromStringHelper = ObjectFromStringListHelper.CreateObject("enum", "RecommendationsGenre", propsAsDict);
+        }
+
+        private static string GetFormattedApiModels() {
+            var modelsAA = new List<Type> {typeof(Meta), typeof(TrackAnalysis), typeof(Bar), typeof(Beat), typeof(Tatum), typeof(Section), typeof(Segment), typeof(AudioAnalysis)};
+            var modelsP = new List<Type> {typeof(ExternalUrls), typeof(Image), typeof(Owner), typeof(Tracks), typeof(Playlist), typeof(PlaylistsRoot)};
+            var modelsTF = new List<Type> {typeof(TrackFeatures)};
+            var modelsTR = new List<Type> {typeof(AddedBy), typeof(Artist), typeof(Album), typeof(Track), typeof(TrackWrapper), typeof(TracksRoot), typeof(ReccomendationTracksRoot), typeof(Seed)};
+
+            var modelsAsList = ApiModelToOneWithAttributesHelper.ConvertMultipleTypes(modelsTR).ToList();
+
+            return MergeStringsIntoOne(modelsAsList);
+        }
+
+        private static string MergeStringsIntoOne(List<string> strings) {
+            var sb = new StringBuilder();
+            foreach (var s in strings) {
+                sb.AppendLine(s);
+                sb.AppendLine();
+            }
+            return sb.Replace("\n\n", "\n").ToString();
         }
     }
 }

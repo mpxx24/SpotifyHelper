@@ -17,7 +17,7 @@ namespace SpotifyApiWrapper.API.Features {
                 var playlists = this.requestHelper.GetData(string.Format(ApiAdresses.User, username));
                 var playlistRoot = this.GetPlaylistFromJson(playlists);
 
-                return playlistRoot?.items;
+                return playlistRoot?.Items;
             }
             catch (Exception ex) {
                 //TODO: log & handle
@@ -34,8 +34,8 @@ namespace SpotifyApiWrapper.API.Features {
                     return result;
                 }
 
-                foreach (var tracksRootItem in tracksRoot.items) {
-                    result.Add(tracksRootItem.track);
+                foreach (var tracksRootItem in tracksRoot.Items) {
+                    result.Add(tracksRootItem.Track);
                 }
                 return result;
             }

@@ -21,13 +21,13 @@ namespace SpotifyApiWrapper.API.Features {
         public IEnumerable<Album> GetAlbumsReccomendationsBasedOnTrack(string trackId, int limit = 10) {
             var tracksAsJson = this.requestHelper.GetData(ApiAdresses.Reccomendations, new RecommendationsParameters(new List<RecommendationsGenre>()) {Tracks = new List<string> {trackId}, Limit = limit.ToString()});
             var tracks = this.GetTracksFromJson(tracksAsJson);
-            return tracks.Select(x => x.album).Distinct();
+            return tracks.Select(x => x.Album).Distinct();
         }
 
         public IEnumerable<Artist> GetArtistsReccomendationsBasedOnTrack(string trackId, int limit = 10) {
             var tracksAsJson = this.requestHelper.GetData(ApiAdresses.Reccomendations, new RecommendationsParameters(new List<RecommendationsGenre>()) {Tracks = new List<string> {trackId}, Limit = limit.ToString()});
             var tracks = this.GetTracksFromJson(tracksAsJson);
-            return tracks.SelectMany(x => x.artists).Distinct();
+            return tracks.SelectMany(x => x.Artists).Distinct();
         }
 
         public IEnumerable<Track> GetTracksReccomendationsBasedOnCustomCriteria(IParameters parameters, int limit = 10) {
@@ -41,7 +41,7 @@ namespace SpotifyApiWrapper.API.Features {
 
         private IEnumerable<Track> GetTracksFromJson(string jsonString) {
             try {
-                return JsonConvert.DeserializeObject<ReccomendationTracksRoot>(jsonString)?.tracks;
+                return JsonConvert.DeserializeObject<ReccomendationTracksRoot>(jsonString)?.Tracks;
             }
             catch (JsonSerializationException ex) {
                 //TODO: log and handle

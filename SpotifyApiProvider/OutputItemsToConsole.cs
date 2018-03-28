@@ -10,7 +10,7 @@ namespace SpotifyApiWrapperTester {
 
             WriteLine("Recommended tracks:");
             foreach (var track in tracks) {
-                WriteLine($"\t{i}. {string.Join("&", track.artists.Select(x => x.name))} - {track.name}");
+                WriteLine($"\t{i}. {string.Join("&", track.Artists.Select(x => x.Name))} - {track.Name}");
                 i++;
             }
         }
@@ -20,7 +20,7 @@ namespace SpotifyApiWrapperTester {
 
             WriteLine("Recommended albums:");
             foreach (var album in albums) {
-                WriteLine($"\t{i}. {string.Join("&", album.artists.Select(x => x.name))} - {album.name}");
+                WriteLine($"\t{i}. {string.Join("&", album.Artists.Select(x => x.Name))} - {album.Name}");
                 i++;
             }
         }
@@ -30,7 +30,7 @@ namespace SpotifyApiWrapperTester {
 
             WriteLine("Recommended artists:");
             foreach (var artist in artists) {
-                WriteLine($"\t{i}. {artist.name}");
+                WriteLine($"\t{i}. {artist.Name}");
                 i++;
             }
         }

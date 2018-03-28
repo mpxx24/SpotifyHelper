@@ -1,42 +1,73 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
-//TODO: clean up namespace + class names (dupl with playlist...)
-//abracadabra summon [attributes]
 namespace SpotifyApiWrapper.API.Models {
     public class ExternalUrls {
-        public string spotify { get; set; }
+        [JsonProperty("spotify")]
+        public string Spotify { get; set; }
     }
 
     public class Image {
-        public int? height { get; set; }
-        public string url { get; set; }
-        public int? width { get; set; }
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
     }
 
     public class Owner {
-        public string display_name { get; set; }
-        public string href { get; set; }
-        public string id { get; set; }
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 
     public class Tracks {
-        public string href { get; set; }
-        public int total { get; set; }
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("total")]
+        public int Total { get; set; }
     }
 
     public class Playlist {
-        public bool collaborative { get; set; }
-        public string href { get; set; }
-        public string id { get; set; }
-        public List<Image> images { get; set; }
-        public string name { get; set; }
-        public Owner owner { get; set; }
-        public Tracks tracks { get; set; }
-        public string uri { get; set; }
+        [JsonProperty("collaborative")]
+        public bool Collaborative { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("images")]
+        public List<Image> Images { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("owner")]
+        public Owner Owner { get; set; }
+
+        [JsonProperty("tracks")]
+        public Tracks Tracks { get; set; }
+
+        [JsonProperty("uri")]
+        public string Uri { get; set; }
     }
 
-    public class PlaylistsRoot{
-        public string href { get; set; }
-        public List<Playlist> items { get; set; }
+    public class PlaylistsRoot {
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("items")]
+        public List<Playlist> Items { get; set; }
     }
 }

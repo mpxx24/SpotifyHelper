@@ -1,97 +1,230 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace SpotifyApiWrapper.API.Models {
     public class Meta {
-        public string analyzer_version { get; set; }
-        public string platform { get; set; }
-        public string detailed_status { get; set; }
-        public int status_code { get; set; }
-        public int timestamp { get; set; }
-        public double analysis_time { get; set; }
-        public string input_process { get; set; }
+        [JsonProperty("analyzer_version")]
+        public string AnalyzerVersion { get; set; }
+
+        [JsonProperty("platform")]
+        public string Platform { get; set; }
+
+        [JsonProperty("detailed_status")]
+        public string DetailedStatus { get; set; }
+
+        [JsonProperty("status_code")]
+        public int StatusCode { get; set; }
+
+        [JsonProperty("timestamp")]
+        public int Timestamp { get; set; }
+
+        [JsonProperty("analysis_time")]
+        public double AnalysisTime { get; set; }
+
+        [JsonProperty("input_process")]
+        public string InputProcess { get; set; }
     }
 
     public class TrackAnalysis {
-        public int num_samples { get; set; }
-        public double duration { get; set; }
-        public string sample_md5 { get; set; }
-        public int offset_seconds { get; set; }
-        public int window_seconds { get; set; }
-        public int analysis_sample_rate { get; set; }
-        public int analysis_channels { get; set; }
-        public double end_of_fade_in { get; set; }
-        public double start_of_fade_out { get; set; }
-        public double loudness { get; set; }
-        public double tempo { get; set; }
-        public double tempo_confidence { get; set; }
-        public int time_signature { get; set; }
-        public double time_signature_confidence { get; set; }
-        public int key { get; set; }
-        public double key_confidence { get; set; }
-        public int mode { get; set; }
-        public double mode_confidence { get; set; }
-        public string codestring { get; set; }
-        public double code_version { get; set; }
-        public string echoprintstring { get; set; }
-        public double echoprint_version { get; set; }
-        public string synchstring { get; set; }
-        public double synch_version { get; set; }
-        public string rhythmstring { get; set; }
-        public double rhythm_version { get; set; }
+        [JsonProperty("num_samples")]
+        public int NumSamples { get; set; }
+
+        [JsonProperty("duration")]
+        public double Duration { get; set; }
+
+        [JsonProperty("sample_md5")]
+        public string SampleMd5 { get; set; }
+
+        [JsonProperty("offset_seconds")]
+        public int OffsetSeconds { get; set; }
+
+        [JsonProperty("window_seconds")]
+        public int WindowSeconds { get; set; }
+
+        [JsonProperty("analysis_sample_rate")]
+        public int AnalysisSampleRate { get; set; }
+
+        [JsonProperty("analysis_channels")]
+        public int AnalysisChannels { get; set; }
+
+        [JsonProperty("end_of_fade_in")]
+        public double EndOfFadeIn { get; set; }
+
+        [JsonProperty("start_of_fade_out")]
+        public double StartOfFadeOut { get; set; }
+
+        [JsonProperty("loudness")]
+        public double Loudness { get; set; }
+
+        [JsonProperty("tempo")]
+        public double Tempo { get; set; }
+
+        [JsonProperty("tempo_confidence")]
+        public double TempoConfidence { get; set; }
+
+        [JsonProperty("time_signature")]
+        public int TimeSignature { get; set; }
+
+        [JsonProperty("time_signature_confidence")]
+        public double TimeSignatureConfidence { get; set; }
+
+        [JsonProperty("key")]
+        public int Key { get; set; }
+
+        [JsonProperty("key_confidence")]
+        public double KeyConfidence { get; set; }
+
+        [JsonProperty("mode")]
+        public int Mode { get; set; }
+
+        [JsonProperty("mode_confidence")]
+        public double ModeConfidence { get; set; }
+
+        [JsonProperty("codestring")]
+        public string Codestring { get; set; }
+
+        [JsonProperty("code_version")]
+        public double CodeVersion { get; set; }
+
+        [JsonProperty("echoprintstring")]
+        public string Echoprintstring { get; set; }
+
+        [JsonProperty("echoprint_version")]
+        public double EchoprintVersion { get; set; }
+
+        [JsonProperty("synchstring")]
+        public string Synchstring { get; set; }
+
+        [JsonProperty("synch_version")]
+        public double SynchVersion { get; set; }
+
+        [JsonProperty("rhythmstring")]
+        public string Rhythmstring { get; set; }
+
+        [JsonProperty("rhythm_version")]
+        public double RhythmVersion { get; set; }
     }
 
     public class Bar {
-        public double start { get; set; }
-        public double duration { get; set; }
-        public double confidence { get; set; }
+        [JsonProperty("start")]
+        public double Start { get; set; }
+
+        [JsonProperty("duration")]
+        public double Duration { get; set; }
+
+        [JsonProperty("confidence")]
+        public double Confidence { get; set; }
     }
 
     public class Beat {
-        public double start { get; set; }
-        public double duration { get; set; }
-        public double confidence { get; set; }
+        [JsonProperty("start")]
+        public double Start { get; set; }
+
+        [JsonProperty("duration")]
+        public double Duration { get; set; }
+
+        [JsonProperty("confidence")]
+        public double Confidence { get; set; }
     }
 
     public class Tatum {
-        public double start { get; set; }
-        public double duration { get; set; }
-        public double confidence { get; set; }
+        [JsonProperty("start")]
+        public double Start { get; set; }
+
+        [JsonProperty("duration")]
+        public double Duration { get; set; }
+
+        [JsonProperty("confidence")]
+        public double Confidence { get; set; }
     }
 
     public class Section {
-        public double start { get; set; }
-        public double duration { get; set; }
-        public double confidence { get; set; }
-        public double loudness { get; set; }
-        public double tempo { get; set; }
-        public double tempo_confidence { get; set; }
-        public int key { get; set; }
-        public double key_confidence { get; set; }
-        public int mode { get; set; }
-        public double mode_confidence { get; set; }
-        public int time_signature { get; set; }
-        public double time_signature_confidence { get; set; }
+        [JsonProperty("start")]
+        public double Start { get; set; }
+
+        [JsonProperty("duration")]
+        public double Duration { get; set; }
+
+        [JsonProperty("confidence")]
+        public double Confidence { get; set; }
+
+        [JsonProperty("loudness")]
+        public double Loudness { get; set; }
+
+        [JsonProperty("tempo")]
+        public double Tempo { get; set; }
+
+        [JsonProperty("tempo_confidence")]
+        public double TempoConfidence { get; set; }
+
+        [JsonProperty("key")]
+        public int Key { get; set; }
+
+        [JsonProperty("key_confidence")]
+        public double KeyConfidence { get; set; }
+
+        [JsonProperty("mode")]
+        public int Mode { get; set; }
+
+        [JsonProperty("mode_confidence")]
+        public double ModeConfidence { get; set; }
+
+        [JsonProperty("time_signature")]
+        public int TimeSignature { get; set; }
+
+        [JsonProperty("time_signature_confidence")]
+        public double TimeSignatureConfidence { get; set; }
     }
 
     public class Segment {
-        public double start { get; set; }
-        public double duration { get; set; }
-        public double confidence { get; set; }
-        public double loudness_start { get; set; }
-        public double loudness_max_time { get; set; }
-        public double loudness_max { get; set; }
-        public List<double> pitches { get; set; }
-        public List<double> timbre { get; set; }
-        public double? loudness_end { get; set; }
+        [JsonProperty("start")]
+        public double Start { get; set; }
+
+        [JsonProperty("duration")]
+        public double Duration { get; set; }
+
+        [JsonProperty("confidence")]
+        public double Confidence { get; set; }
+
+        [JsonProperty("loudness_start")]
+        public double LoudnessStart { get; set; }
+
+        [JsonProperty("loudness_max_time")]
+        public double LoudnessMaxTime { get; set; }
+
+        [JsonProperty("loudness_max")]
+        public double LoudnessMax { get; set; }
+
+        [JsonProperty("pitches")]
+        public List<double> Pitches { get; set; }
+
+        [JsonProperty("timbre")]
+        public List<double> Timbre { get; set; }
+
+        [JsonProperty("loudness_end")]
+        public double? LoudnessEnd { get; set; }
     }
 
     public class AudioAnalysis {
-        public Meta meta { get; set; }
-        public TrackAnalysis track { get; set; }
-        public List<Bar> bars { get; set; }
-        public List<Beat> beats { get; set; }
-        public List<Tatum> tatums { get; set; }
-        public List<Section> sections { get; set; }
-        public List<Segment> segments { get; set; }
+        [JsonProperty("meta")]
+        public Meta Meta { get; set; }
+
+        [JsonProperty("track")]
+        public TrackAnalysis Track { get; set; }
+
+        [JsonProperty("bars")]
+        public List<Bar> Bars { get; set; }
+
+        [JsonProperty("beats")]
+        public List<Beat> Beats { get; set; }
+
+        [JsonProperty("tatums")]
+        public List<Tatum> Tatums { get; set; }
+
+        [JsonProperty("sections")]
+        public List<Section> Sections { get; set; }
+
+        [JsonProperty("segments")]
+        public List<Segment> Segments { get; set; }
     }
 }

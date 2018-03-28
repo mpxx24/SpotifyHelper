@@ -1,61 +1,119 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace SpotifyApiWrapper.API.Models {
     public class AddedBy {
-        public string href { get; set; }
-        public string id { get; set; }
-        public string uri { get; set; }
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("uri")]
+        public string Uri { get; set; }
     }
 
     public class Artist {
-        public string href { get; set; }
-        public string id { get; set; }
-        public string name { get; set; }
-        public string uri { get; set; }
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("uri")]
+        public string Uri { get; set; }
     }
 
     public class Album {
-        public string album_type { get; set; }
-        public List<Artist> artists { get; set; }
-        public string href { get; set; }
-        public string id { get; set; }
-        public List<Image> images { get; set; }
-        public string name { get; set; }
-        public string uri { get; set; }
+        [JsonProperty("album_type")]
+        public string AlbumType { get; set; }
+
+        [JsonProperty("artists")]
+        public List<Artist> Artists { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("images")]
+        public List<Image> Images { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("uri")]
+        public string Uri { get; set; }
     }
 
     public class Track {
-        public Album album { get; set; }
-        public List<Artist> artists { get; set; }
-        public string href { get; set; }
-        public string id { get; set; }
-        public string name { get; set; }
-        public int popularity { get; set; }
-        public string preview_url { get; set; }
-        public string uri { get; set; }
+        [JsonProperty("album")]
+        public Album Album { get; set; }
+
+        [JsonProperty("artists")]
+        public List<Artist> Artists { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("popularity")]
+        public int Popularity { get; set; }
+
+        [JsonProperty("preview_url")]
+        public string PreviewUrl { get; set; }
+
+        [JsonProperty("uri")]
+        public string Uri { get; set; }
     }
 
     public class TrackWrapper {
-        public Track track { get; set; }
+        [JsonProperty("track")]
+        public Track Track { get; set; }
     }
 
     public class TracksRoot {
-        public string href { get; set; }
-        public List<TrackWrapper> items { get; set; }
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("items")]
+        public List<TrackWrapper> Items { get; set; }
     }
 
-
     public class ReccomendationTracksRoot {
-        public List<Track> tracks { get; set; }
-        public List<Seed> seeds { get; set; }
+        [JsonProperty("tracks")]
+        public List<Track> Tracks { get; set; }
+
+        [JsonProperty("seeds")]
+        public List<Seed> Seeds { get; set; }
     }
 
     public class Seed {
-        public int initialPoolSize { get; set; }
-        public int afterFilteringSize { get; set; }
-        public int afterRelinkingSize { get; set; }
-        public string id { get; set; }
-        public string type { get; set; }
-        public string href { get; set; }
+        [JsonProperty("initialPoolSize")]
+        public int Initialpoolsize { get; set; }
+
+        [JsonProperty("afterFilteringSize")]
+        public int Afterfilteringsize { get; set; }
+
+        [JsonProperty("afterRelinkingSize")]
+        public int Afterrelinkingsize { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
     }
 }
