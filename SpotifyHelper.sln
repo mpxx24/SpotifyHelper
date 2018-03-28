@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApiWrapperTester", "SpotifyApiProvider\SpotifyApiWrapperTester.csproj", "{7EFE2908-C0C2-4452-BC5D-F170AB402528}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApiWrapperTestConsole", "SpotifyApiWrapperTestConsole\SpotifyApiWrapperTestConsole.csproj", "{7EFE2908-C0C2-4452-BC5D-F170AB402528}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApiWrapper", "SpotifyApiWrapper\SpotifyApiWrapper.csproj", "{041F37BB-5129-4F55-B846-3C3AB53173B1}"
 EndProject
