@@ -13,6 +13,10 @@ namespace SpotifyApiWrapper.API.Wrappers {
             return IoC.Resolve<IRecommendationsService>().GetTracksReccomendationsBasedOnTrack(trackId, limit);
         }
 
+        public static IEnumerable<Track> GetCustomTracksReccomendationsBasedOnTrack(string trackId, int margin, int limit = 10) {
+            return IoC.Resolve<IRecommendationsService>().GetCustomTracksReccomendationsBasedOnTrack(trackId, margin, limit);
+        }
+
         public static IEnumerable<Album> GetAlbumsReccomendationsBasedOnTrack(string trackId, int limit = 10) {
             return IoC.Resolve<IRecommendationsService>().GetAlbumsReccomendationsBasedOnTrack(trackId, limit);
         }

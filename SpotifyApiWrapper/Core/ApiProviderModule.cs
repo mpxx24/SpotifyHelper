@@ -26,6 +26,8 @@ namespace SpotifyApiWrapper.Core {
             builder.RegisterType<PlaylistService>().As<IPlaylistService>();
             builder.RegisterType<AudioAnalysisService>().As<IAudioAnalysisService>();
             builder.RegisterType<RecommendationsService>().As<IRecommendationsService>();
+            builder.RegisterType<TrackService>().As<ITrackService>();
+            builder.RegisterType<ArtistService>().As<IArtistService>();
         }
     }
 }

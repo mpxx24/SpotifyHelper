@@ -25,7 +25,7 @@ namespace SpotifyApiWrapperTester {
                 //var formattedTypes = GetFormattedApiModels();
 
                 //DisplayUserPlaylists("mpxx24");
-                //DisplayRecommendedTracks(testTrackId);
+                DisplayRecommendedTracks(testTrackId);
                 //DisplayRecommendedAlbums(testTrackId);
                 //DisplayRecommendedArtists(testTrackId);
 
@@ -58,6 +58,9 @@ namespace SpotifyApiWrapperTester {
             var tracks = RecommendationsWrapper.GetTracksReccomendationsBasedOnCustomCriteria(criteria);
             WriteLine(criteria);
             OutputItemsToConsole.PrintRecommendedTracks(tracks);
+
+            var tracksCustom = RecommendationsWrapper.GetCustomTracksReccomendationsBasedOnTrack(testTrackId, 10);
+            OutputItemsToConsole.PrintRecommendedTracks(tracksCustom);
         }
 
         private static void DisplayRecommendedAlbums(string testTrackId) {
@@ -100,7 +103,7 @@ namespace SpotifyApiWrapperTester {
             return MergeStringsIntoOne(modelsAsList);
         }
 
-        private static string MergeStringsIntoOne(List<string> strings) {
+        private static string MergeStringsIntoOne(IEnumerable<string> strings) {
             var sb = new StringBuilder();
             foreach (var s in strings) {
                 sb.AppendLine(s);

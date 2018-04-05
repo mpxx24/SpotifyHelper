@@ -7,5 +7,6 @@ namespace SpotifyApiWrapper.API.Contracts {
         IEnumerable<Album> GetAlbumsReccomendationsBasedOnTrack(string trackId, int limit = 10);
         IEnumerable<Artist> GetArtistsReccomendationsBasedOnTrack(string trackId, int limit = 10);
         IEnumerable<Track> GetTracksReccomendationsBasedOnCustomCriteria(IParameters parameters, int limit = 10);
+        IEnumerable<Track> GetCustomTracksReccomendationsBasedOnTrack(string trackId, int margin, int limit = 10);
     }
 }

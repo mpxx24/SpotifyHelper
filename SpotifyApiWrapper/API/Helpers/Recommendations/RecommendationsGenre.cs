@@ -132,6 +132,8 @@
 
         J_Rock,
 
+        J_Metal,
+
         Jazz,
 
         K_Pop,
@@ -247,6 +249,8 @@
         Trip_Hop,
 
         Turkish,
+
+        Visualkei,
 
         Work_Out,
 

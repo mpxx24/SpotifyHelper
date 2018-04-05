@@ -25,6 +25,9 @@ namespace SpotifyApiWrapper.API.Models {
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
+
+        [JsonProperty("genres")]
+        public IEnumerable<string> Genres { get; set; }
     }
 
     public class Album {

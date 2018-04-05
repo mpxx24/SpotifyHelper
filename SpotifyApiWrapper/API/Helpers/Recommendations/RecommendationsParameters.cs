@@ -135,7 +135,7 @@ namespace SpotifyApiWrapper.API.Helpers.Recommendations {
         public string TargetEnergy { get; set; }
 
         [JsonProperty("max_loudness")]
-        public string MaxLaudeness { get; set; }
+        public string MaxLoudness { get; set; }
 
         [JsonProperty("min_valence")]
         public string MinValence { get; set; }
@@ -150,7 +150,7 @@ namespace SpotifyApiWrapper.API.Helpers.Recommendations {
         public string TargetDanceability { get; set; }
 
         [JsonProperty("min_loudness")]
-        public string MinLaudeness { get; set; }
+        public string MinLoudness { get; set; }
 
         public override string ToString() {
             var asJson = JsonConvert.SerializeObject(this, new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore});
